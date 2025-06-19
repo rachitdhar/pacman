@@ -9,7 +9,7 @@ const WINDOW_WIDTH int32 = 800
 const FPS int32 = 20
 
 var is_paused bool = false
-var game_state GameState
+var wall_map WallMap
 
 func initializeGameState() {
 	// to be implemented
@@ -42,9 +42,9 @@ func handleDrawing() {
 	rl.ClearBackground(NavyBlue)
 
 	drawHeaderArea()
-	for i, row := range game_state {
+	for i, row := range wall_map {
 		for j, val := range row {
-			if val != EMPTY {
+			if val {
 				drawCell(val, i, j)
 			}
 		}
