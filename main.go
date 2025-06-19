@@ -2,7 +2,6 @@ package main
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
-	"fmt"
 )
 
 const WINDOW_HEIGHT int32 = 800
@@ -27,7 +26,7 @@ func handleKeyPress(key int32) {
 }
 
 func drawHeaderArea() {
-	// to be implemented
+	rl.DrawText("SCORE", WINDOW_WIDTH / 2, 20, 16, rl.White)
 }
 
 func drawBottomArea() {
@@ -38,11 +37,7 @@ func drawCell(row_pos int, col_pos int) {
 	// to be implemented
 }
 
-func handleDrawing() {
-	rl.BeginDrawing()
-	rl.ClearBackground(NavyBlue)
-
-	drawHeaderArea()
+func drawWalls() {
 	for i, row := range wall_map {
 		for j, val := range row {
 			if val {
@@ -50,12 +45,18 @@ func handleDrawing() {
 			}
 		}
 	}
+}
+
+func handleDrawing() {
+	rl.BeginDrawing()
+	rl.ClearBackground(NavyBlue)
+
+	drawHeaderArea()
 	drawBottomArea()
 	rl.EndDrawing()
 }
 
 func main() {
-	fmt.Println("Testing")
 	initializeGameState()
 
 	rl.InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pac-Man")
@@ -63,6 +64,8 @@ func main() {
 
 	rl.SetTargetFPS(FPS)
 	rl.SetExitKey(0) // not to use ESC key to exit
+
+	drawWalls()
 
 	for !rl.WindowShouldClose() {
 		var key int32 = rl.GetKeyPressed()
