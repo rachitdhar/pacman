@@ -45,6 +45,18 @@ However, instead of doing this each time the terminal window is reopened, it is 
 
 ## Development
 
+Initially, if cloning the repo, to install the dependencies, run:
+
+```
+go mod tidy
+```
+
+To build the project:
+
+```
+go build
+```
+
 To compile and run the project, simply use:
 
 ```

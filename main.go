@@ -2,6 +2,7 @@ package main
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"fmt"
 )
 
 const WINDOW_HEIGHT int32 = 800
@@ -33,7 +34,7 @@ func drawBottomArea() {
 	// to be implemented
 }
 
-func drawCell(cell_code CellCode, row_pos int, col_pos int) {
+func drawCell(row_pos int, col_pos int) {
 	// to be implemented
 }
 
@@ -45,7 +46,7 @@ func handleDrawing() {
 	for i, row := range wall_map {
 		for j, val := range row {
 			if val {
-				drawCell(val, i, j)
+				drawCell(i, j)
 			}
 		}
 	}
@@ -54,6 +55,7 @@ func handleDrawing() {
 }
 
 func main() {
+	fmt.Println("Testing")
 	initializeGameState()
 
 	rl.InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pac-Man")
